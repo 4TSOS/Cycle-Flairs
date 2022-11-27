@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Cycle-Flairs
-// @namespace    https://github.com/4TSOS/Cycle-Flairs/main/cycle-flairs.js
+// @namespace    none
 // @version      1.0
 // @description  Lets you create a custom pattern for your flair to cycle through.
 // @author       Walnut
@@ -9,14 +9,6 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // ==/UserScript==
-
-/*
-=== Before advertising/publishing ===
-- Create an accessible UI.
-- Fix profile edits not always saving properly.
-- Include a small documentation.
-
-*/
 
 (function() {
     'use strict';
@@ -39,6 +31,9 @@
         document.head.appendChild(style);
 
         function cycle() {
+            if (document.querySelector("#ui-menu-micro")) {
+                return;
+            };
             var display_name = App.user.display_name;
             var bio = App.user.bio;
             var gender = App.user.gender;
@@ -64,5 +59,10 @@
             clearInterval(cycle_loop);
             console.log("< Cycle paused <");
         });
+        
+        const observer = new MutationObserver(function() {
+        });
+
+        observer.observe(document.body, {attributes: true, subtree: true, childList: true});
     });
 })();
