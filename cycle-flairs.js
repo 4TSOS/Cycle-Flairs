@@ -10,6 +10,14 @@
 // @grant        GM_setValue
 // ==/UserScript==
 
+/*
+=== Before advertising/publishing ===
+- Create an accessible UI.
+- Fix profile edits not always saving properly.
+- Include a small documentation.
+- Isolate profile editing to a custom menu to avoid Emerald bugs.
+*/
+
 (function() {
     'use strict';
     window.addEventListener('load', function(event) {
